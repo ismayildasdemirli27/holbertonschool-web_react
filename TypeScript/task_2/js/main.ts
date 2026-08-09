@@ -1,17 +1,15 @@
-// İşçinin Director olub-olmadığını yoxlayan Type Predicate funksiyası
-function isDirector(employee: Director | Teacher): employee is Director {
-  return (employee as Director).workDirectorTasks !== undefined;
-}
+// String literal type
+type Subjects = 'Math' | 'History';
 
-// İşçinin tipinə uyğun tapşırığı icra edən funksiya
-function executeWork(employee: Director | Teacher): void {
-  if (isDirector(employee)) {
-    console.log(employee.workDirectorTasks());
-  } else {
-    console.log(employee.workTeacherTasks());
+// Dərsə uyğun nəticə qaytaran funksiya
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  } else if (todayClass === 'History') {
+    return 'Teaching History';
   }
 }
 
 // Nəticəni yoxlamaq üçün (Şərtdəki Example)
-executeWork(createEmployee(200));
-executeWork(createEmployee(1000));
+console.log(teachClass('Math'));
+console.log(teachClass('History'));
